@@ -1,0 +1,47 @@
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Login</h2>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username:</label><br/>
+            <input type="text" id="username" class="form-control" name="username" ngModel required>
+            <div *ngIf="loginForm.controls.username?.invalid && (loginForm.controls.username?.touched || loginForm.controls.username?.dirty)">
+                <div class="text-danger" *ngIf="loginForm.controls.username.errors?.required">
+                    Username is required
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label><br/>
+            <input type="password" id="password" class="form-control" name="password" ngModel required>
+            <div class="text-danger" *ngIf="loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || loginForm.controls.password?.dirty)">
+                <div *ngIf="loginForm.controls.password.errors?.required">
+                    Password is required
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="role" class="form-label">Role:</label>
+            <select class="form-control" id="role" name="role" ngModel required>
+                <option value="">Select a role</option>
+                <option value="ADMIN">Admin</option>
+                <option value="ORGANIZER">Organizer</option>
+            </select> 
+        </div>
+
+        <div *ngIf="loginForm.controls.role?.invalid && (loginForm.controls.role?.touched || loginForm.controls.role?.dirty)">
+            <div class="text-danger" *ngIf="loginForm.controls.role.errors?.required">
+                Role is required
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button><br><br>
+
+        <div class="d-flex justify-content-center">
+            <p class="mb-4 text-center">Don't have an account?</p>
+            <a routerLink="/register">Register</a>
+        </div>
+    </form>
+</div>
+ 

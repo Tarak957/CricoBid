@@ -1,0 +1,46 @@
+<div class="container mt-5 mb-5">
+    <div>
+        <h3 class="mb-4 unsold">Teams</h3>
+        <table class="table table-striped" style="border: 1px solid grey; background-color: #e6f7ff;">
+            <thead>
+                <tr>
+                    <th>Team Name</th>
+                    <th>Budget</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of teams">
+                    <td>{{team.name | uppercase}}</td>
+                    <td>{{team.maximumBudget | currency:"INR"}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm action" (click)="onEditTeam(team)">Edit</button>
+                        <button class="btn btn-danger btn-sm action" (click)="onDeleteTeam(team.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  
+    <div>
+        <h2 class="mb-4 unsold" [innerText]="isEditing ? 'Edit Team' : 'Create New Team'"></h2>
+        <form #teamForm="ngForm" (ngSubmit)="createTeam()">
+            <div class="form-group">
+                <label for="teamName">Team Name</label>
+                <input type="text" id="teamName" [(ngModel)]="newTeam.name" name="teamName" class="form-control" required #teamName="ngModel">
+            </div>
+  
+            <div class="form-group">
+                <label for="maximumBudget">Maximum Budget</label>
+                <input type="number" id="maximumBudget" [(ngModel)]="newTeam.maximumBudget" name="maximumBudget" class="form-control" required>
+            </div>
+  
+            <div id="status" class="mb-3">Maximum Budget Status {{maxBidStatus}}</div>
+            <div>
+                <button id="createTeam" type="submit" class="btn btn-success action" [disabled]="teamForm.invalid" [innerText]="isEditing ? 'Update Team' : 'Create'"></button>
+                <button *ngIf="isEditing" type="button" class="btn btn-danger action" (click)="onCancelEditTeam()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+

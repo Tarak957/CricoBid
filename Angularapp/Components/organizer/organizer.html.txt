@@ -1,0 +1,86 @@
+<div class="container mt-5 mb-5">
+    <h2 class="mb-4 text-center">Organizer Panel</h2>
+    <div>
+        <h4 class="mb-4 unsold">Unsold Players</h4>
+        <h5 class="mb-4">Filter by category </h5>
+        <select class="form-control mb-3" [(ngModel)]="selectedCategory" (change)="filterPlayerByCategory()">
+            <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+        </select>
+        <b *ngIf="playersByCategory.length == 0">All Players are sold <br><br></b>
+        <table *ngIf="playersByCategory.length != 0" class="table table-striped" style="border: 1px solid grey; background-color: #e6f7ff;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Category</th>
+                    <th>Bidding Price</th>
+                    <th>Select Team</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let player of playersByCategory">
+                    <td>{{player.name |titlecase}}</td>
+                    <td>{{player.age}}</td>
+                    <td>{{player.category}}</td>
+                    <td>{{player.biddingPrice |currency:"INR"}}</td>
+                    <td>
+                        <select class="form-control d-inline-block w-auto" #selectedTeam>
+                            <option value="" disabled selected>Select Team</option>
+                            <option *ngFor="let team of teams" value="{{team.id}}">{{team.name | uppercase}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary ml-2" (click)="assignPlayerToTeamId(selectedTeam.value, player.id)">Assign</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div>
+        <h4 class="mb-4 unsold">Team List</h4>
+        <table class="table table-striped" style="border: 1px solid grey; background-color: #e6f7ff;">
+            <thead>
+                <tr>
+                    <th>Team Name</th>
+                    <th>Budget</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of teams">
+                    <td>{{team.name |uppercase}}</td>
+                    <td>{{team.maximumBudget|currency:'INR'}}</td>
+                    <td>
+                        <button class="btn btn-success" (click)="getAllPlayersByTeamId(team.id, team.name)">Player List</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div *ngIf="showPlayerButtonClicked">
+            <h4>Team: {{displayTeamName|uppercase}}</h4>
+            <b *ngIf="playersOfTeamId.length == 0">Team is Empty</b>
+            <table *ngIf="playersOfTeamId.length != 0" class="table table-striped" style="border: 1px solid grey; background-color: #e6f7ff;">
+                <thead>
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Bidding Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of playersOfTeamId">
+                        <td>{{player.name | titlecase}}</td>
+                        <td>{{player.biddingPrice|currency:'INR'}}</td>
+                        <td>
+                            <button class="btn btn-danger" (click)="releasePlayerById(player.id)">Release Player</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

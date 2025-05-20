@@ -1,0 +1,14 @@
+<div class="container mt-5 mb-5">
+    <h2 class="mb-4 text-center">Admin Panel</h2>
+    <div>
+        <app-team [teams]="teams" (createTeamEvent)="createTeam($event)" (editTeamEvent)="saveEditedTeam($event)"
+            (deleteTeamEvent)="deleteTeam($event)">
+        </app-team>
+    </div>
+  
+    <div>
+        <app-player [players]="players" (createPlayerEvent)="createPlayer($event)" (editPlayerEvent)="saveEditedPlayer($event)"
+            (deletePlayerEvent)="deletePlayer($event)">
+        </app-player>
+    </div>
+</div>

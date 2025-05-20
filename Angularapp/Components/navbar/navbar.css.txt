@@ -1,0 +1,49 @@
+h1{
+    color: #007bff;
+    padding-left: 20px;
+    padding-top: 8px;
+}
+
+
+div {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+a {
+    text-decoration: none;
+    color: #007bff;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+a:active {
+    color: #804200;
+}
+
+.links {
+    display: flex;
+    align-items: center; 
+    padding-right: 20px;
+}
+
+.logout{
+    color: 007bff;
+}
+
+.logout:hover{
+    color: red;
+}
+
+
+
+
+
+
+

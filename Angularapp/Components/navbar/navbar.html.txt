@@ -1,0 +1,15 @@
+<div class="box" >
+    <h1>CricoBid</h1>
+    <div class="links">
+        <a routerLink="/"> Home </a> 
+        <a *ngIf="authService.isAdmin()" routerLink="/admin"> Admin </a>  
+        <a *ngIf="authService.isOrganizer()" routerLink="/organizer"> Organizer </a>         
+        <a routerLink="/register" *ngIf="!authService.isLoggedUser()"> Register </a> 
+        <a routerLink="/login" *ngIf="!authService.isLoggedUser()"> Login </a> 
+        <a class="logout" (click)="logout()" *ngIf="authService.isLoggedUser()"> Logout </a>
+    </div>
+</div>
+
+
+
+    

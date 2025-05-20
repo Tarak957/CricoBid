@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Register</h2>
+    <form [formGroup]="registrationForm" (ngSubmit)="register()" class="needs-validation" novalidate>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username:</label>
+        <input type="text" id="username" name="username" formControlName="username" class="form-control" required>
+        <div class="text-danger" *ngIf="registrationForm.controls.username.invalid && (registrationForm.controls.username.touched || registrationForm.controls.username.dirty)">
+          Username is required
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" id="password" name="password" formControlName="password" class="form-control" required>
+        <div class="text-danger" *ngIf="registrationForm.controls.password.invalid && (registrationForm.controls.password.touched || registrationForm.controls.password.dirty)">
+          Password is required
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword" class="form-control" required>
+        <div class="text-danger" *ngIf="registrationForm.errors?.mismatch && (registrationForm.controls.confirmPassword.touched || registrationForm.controls.confirmPassword.dirty)">
+          Passwords do not match
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary w-100" [disabled]="registrationForm.invalid">Register</button><br><br>
+
+      <div class="d-flex justify-content-center">
+        <p class="mb-4 text-center">Already have an account?</p>
+        <a routerLink="/login">Login</a>
+    </div>
+    </form>
+  </div>
