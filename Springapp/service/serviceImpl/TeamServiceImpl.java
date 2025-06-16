@@ -9,7 +9,7 @@ import com.examly.springapp.entity.Team;
 import com.examly.springapp.repository.TeamRepo;
 import com.examly.springapp.service.TeamService;
 @Service
-public class TeamServiceImpl implements TeamService{
+public class TeamServiceImpl{
 //!Constructor based injection
     private final TeamRepo teamRepo;
     public TeamServiceImpl(TeamRepo teamRepo){
