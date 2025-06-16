@@ -12,7 +12,7 @@ import com.examly.springapp.exception.PlayerAlreadyAssignedException;
 import com.examly.springapp.repository.UserRepo;
 import com.examly.springapp.service.UserService;
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl{
 //!Constructor based injection
     private UserRepo userRepo;
     private PasswordEncoder encoder;
