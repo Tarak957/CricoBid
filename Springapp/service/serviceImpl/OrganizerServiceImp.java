@@ -14,7 +14,7 @@ import com.examly.springapp.repository.TeamRepo;
 import com.examly.springapp.service.OrganizerService;
 
 @Service
-public class OrganizerServiceImpl implements OrganizerService{
+public class OrganizerServiceImpl{
 //!Constructor based injection
     private final PlayerRepo playerRepo;
     private final TeamRepo teamRepo;
